@@ -71,8 +71,15 @@ public class Quadratic {
   /**
    * Find the smaller of the two roots.
    */
-  public double smallerRoot() {
-    return 0;   // STUB
+  public double smallerRoot() throws Exception{
+    if (a == 0) {
+      throw new DivideByZeroException("Cannot compute quadratic roots of linear functions.");
+    } else if (Math.pow(this.b, 2) - (4 * this.a * this.c) < 0){
+      throw new Exception("Imaginary root");
+    }
+    double root1 = (- this.b - Math.sqrt(Math.pow(this.b, 2) - (4 * this.a * this.c))) / (2 * this.a);
+    double root2 = (- this.b + Math.sqrt(Math.pow(this.b, 2) - (4 * this.a * this.c))) / (2 * this.a);
+    return Math.min(root1, root2);
   } // smallerRoot
 
   /**
